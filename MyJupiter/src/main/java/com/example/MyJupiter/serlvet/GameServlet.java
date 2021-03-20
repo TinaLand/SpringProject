@@ -9,7 +9,9 @@ import java.io.IOException;
 public class GameServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.getWriter().print("Hello World!");
+        //response.getWriter().print("Hello World!");
+        String gamename = request.getParameter("gamename");
+        response.getWriter().print(gamename);
     }
 
     @Override
