@@ -1,92 +1,85 @@
 package com.example.MyJupiter.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Game {
+    @JsonProperty("name")
     private String name;
+
+    @JsonProperty("developer")
     private String developer;
+
+    @JsonProperty("release_time")
     private String releaseTime;
+
+    @JsonProperty("website")
     private String website;
+
+    @JsonProperty("price")
     private double price;
-
-    public  Game(Builder builder) {
-        this.name = builder.name;
-        this.developer = builder.developer;
-        this.releaseTime = builder.releaseTime;
-        this.website = builder.website;
-        this.price = builder.price;
-
-    }
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getDeveloper() {
         return developer;
     }
 
-    public void setDeveloper(String developer) {
-        this.developer = developer;
-    }
-
     public String getReleaseTime() {
         return releaseTime;
-    }
-
-    public void setReleaseTime(String releaseTime) {
-        this.releaseTime = releaseTime;
     }
 
     public String getWebsite() {
         return website;
     }
 
-    public void setWebsite(String website) {
-        this.website = website;
-    }
-
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public Game(Builder builder) {
+        this.name = builder.name;
+        this.developer = builder.developer;
+        this.releaseTime = builder.releaseTime;
+        this.website = builder.website;
+        this.price = builder.price;
     }
 
-    // innerclass
-    public class Builder {
+    public static class Builder {
         private String name;
         private String developer;
         private String releaseTime;
         private String website;
         private double price;
 
-        public void setName(String name) {
+        public Builder setName(String name) {
             this.name = name;
+            return this;
         }
 
-        public void setDeveloper(String developer) {
+        public Builder setDeveloper(String developer) {
             this.developer = developer;
+            return this;
         }
 
-        public void setReleaseTime(String releaseTime) {
+        public Builder setReleaseTime(String releaseTime) {
             this.releaseTime = releaseTime;
+            return this;
         }
 
-        public void setWebsite(String website) {
+        public Builder setWebsite(String website) {
             this.website = website;
+            return this;
         }
 
-        public void setPrice(double price) {
+        public Builder setPrice(double price) {
             this.price = price;
+            return this;
         }
-    }
 
-    public Game build(Builder builder) {
-        //Builder builder = new Builder();
-        return new Game(builder);
+        public Game build() {
+            return new Game(this);
+        }
     }
 }
