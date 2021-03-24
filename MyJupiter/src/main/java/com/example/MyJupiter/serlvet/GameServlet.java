@@ -1,14 +1,8 @@
 package com.example.MyJupiter.serlvet;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
-import java.io.IOException;
-
-import com.example.MyJupiter.entity.Game;
+import com.example.MyJupiter.external.TwitchClient;
+import com.example.MyJupiter.external.TwitchException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.json.JSONObject;
-
 import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
 
@@ -21,6 +15,7 @@ import java.io.IOException;
 
 @WebServlet(name = "GameServlet", urlPatterns = {"/game"})
 public class GameServlet extends HttpServlet {
+    // do not support for post, we only get data from Twitch
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         JSONObject jsonRequest = new JSONObject(IOUtils.toString(request.getReader()));
         String name = jsonRequest.getString("name");
@@ -42,17 +37,49 @@ public class GameServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("application/json");
-        ObjectMapper mapper = new ObjectMapper();
+//        response.setContentType("application/json");
+//        ObjectMapper mapper = new ObjectMapper();
+//
+//        GameV.Builder builder = new GameV.Builder();
+//        builder.setName("World of Warcraft");
+//        builder.setDeveloper("Blizzard Entertainment");
+//        builder.setReleaseTime("Feb 11, 2005");
+//        builder.setWebsite("https://www.worldofwarcraft.com");
+//        builder.setPrice(49.99);
+//
+//        GameV game = builder.build();
+//        response.getWriter().print(mapper.writeValueAsString(game));
 
-        Game.Builder builder = new Game.Builder();
-        builder.setName("World of Warcraft");
-        builder.setDeveloper("Blizzard Entertainment");
-        builder.setReleaseTime("Feb 11, 2005");
-        builder.setWebsite("https://www.worldofwarcraft.com");
-        builder.setPrice(49.99);
 
-        Game game = builder.build();
-        response.getWriter().print(mapper.writeValueAsString(game));
+
+        String gameName = request.getParameter("game_name");
+        TwitchClient client = new TwitchClient();
+
+        response.setContentType("application/json;charset=UTF-8");
+
+        try {
+            if (gameName != null) {
+                // use response, since we get data from website
+                response.getWriter().println(new ObjectMapper().writeValueAsString(client.searchGame(gameName)));
+            } else {
+                // if limit is 0, will convert to 20 as default limit
+                response.getWriter().print(new ObjectMapper().writeValueAsString(client.topGames(0)));
+            }
+        } catch (TwitchException e) {
+            throw new ServletException(e);
+        }
+
+        // when use request, when use response?
+        // Talk Shows & Podcasts
+
+        /**
+         * 1. java lambda how to write
+         * 2. response, request, when to use, how to use
+         * (example code and recheck my questions)
+         * 3. Talk Shows & Podcasts
+         * http://localhost:8082/MyJupiter/game?game_name=Talk%20Shows%20&%20Podcasts
+         * {"id":"417752","name":"Talk Shows & Podcasts","box_art_url":"https://static-cdn.jtvnw.net/ttv-boxart/Talk%20Shows%20&%20Podcasts-{width}x{height}.jpg"}
+         * 4. check for company's infra, how they set it up
+         * */
     }
 }
