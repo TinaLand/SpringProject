@@ -2,7 +2,6 @@ package com.example.MyJupiter.serlvet;
 
 import com.example.MyJupiter.external.TwitchClient;
 import com.example.MyJupiter.external.TwitchException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,8 +23,11 @@ public class SearchServlet extends HttpServlet {
 
         TwitchClient client = new TwitchClient();
         try {
-            response.setContentType("application/json;charset=UTF-8");
-            response.getWriter().print(new ObjectMapper().writeValueAsString(client.searchItems(gameId)));
+//            response.setContentType("application/json;charset=UTF-8");
+//            response.getWriter().print(new ObjectMapper().writeValueAsString(client.searchItems(gameId)));
+            ServletUtil.writeItemMap(response, client.searchItems(gameId));
+
+
         } catch (TwitchException e) {
             throw new ServletException(e);
         }
