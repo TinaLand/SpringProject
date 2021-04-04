@@ -20,6 +20,9 @@ public class LoginServlet extends HttpServlet {
         // Read user data from the request body
         ObjectMapper mapper = new ObjectMapper();
         LoginRequestBody body = mapper.readValue(request.getReader(), LoginRequestBody.class);
+
+        //LoginRequestBody body = ServletUtil.readRequestBody(LoginRequestBody.class, request);
+
         if (body == null) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;
@@ -48,6 +51,7 @@ public class LoginServlet extends HttpServlet {
 
             LoginResponseBody loginResponseBody = new LoginResponseBody(body.getUserId(), username);
             response.setContentType("application/json;charset=UTF-8");
+            //ObjectMapper mapper = new ObjectMapper();
             response.getWriter().print(new ObjectMapper().writeValueAsString(loginResponseBody));
         } else {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
