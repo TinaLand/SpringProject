@@ -3,7 +3,6 @@ package com.example.MyJupiter.serlvet;
 import com.example.MyJupiter.db.MySQLConnection;
 import com.example.MyJupiter.db.MySQLException;
 import com.example.MyJupiter.entity.User;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,10 +17,10 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             // Read user data from the request body
-            ObjectMapper mapper = new ObjectMapper();
-            User user = mapper.readValue(request.getReader(), User.class);
+            //ObjectMapper mapper = new ObjectMapper();
+            //User user = mapper.readValue(request.getReader(), User.class);
 
-//            User user = ServletUtil.readRequestBody(User.class, request);
+            User user = ServletUtil.readRequestBody(User.class, request);
 
             if (user == null) {
                 response.setStatus(HttpServletResponse.SC_BAD_REQUEST);

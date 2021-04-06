@@ -4,7 +4,6 @@ import com.example.MyJupiter.db.MySQLConnection;
 import com.example.MyJupiter.db.MySQLException;
 import com.example.MyJupiter.entity.FavoriteRequestBody;
 import com.example.MyJupiter.entity.Item;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,10 +29,10 @@ public class FavoriteServlet extends HttpServlet {
         // Get user ID from request URL, this is a temporary solution since we don’t support session now
 //        String userId = request.getParameter("user_id");
         // Get favorite item information from request body
-        ObjectMapper mapper = new ObjectMapper();
-        FavoriteRequestBody body = mapper.readValue(request.getReader(), FavoriteRequestBody.class);
+//        ObjectMapper mapper = new ObjectMapper();
+//        FavoriteRequestBody body = mapper.readValue(request.getReader(), FavoriteRequestBody.class);
 
-        //FavoriteRequestBody body = ServletUtil.readRequestBody(FavoriteRequestBody.class, request);
+        FavoriteRequestBody body = ServletUtil.readRequestBody(FavoriteRequestBody.class, request);
 
 
         if (body == null) {
@@ -64,8 +63,11 @@ public class FavoriteServlet extends HttpServlet {
         String userId = (String) session.getAttribute("user_id");
 
 //        String userId = request.getParameter("user_id");
-        ObjectMapper mapper = new ObjectMapper();
-        FavoriteRequestBody body = mapper.readValue(request.getReader(), FavoriteRequestBody.class);
+//        ObjectMapper mapper = new ObjectMapper();
+//        FavoriteRequestBody body = mapper.readValue(request.getReader(), FavoriteRequestBody.class);
+
+        FavoriteRequestBody body = ServletUtil.readRequestBody(FavoriteRequestBody.class, request);
+
         if (body == null) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;
