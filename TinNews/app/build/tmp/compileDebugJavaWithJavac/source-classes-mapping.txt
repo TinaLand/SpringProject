@@ -1,0 +1,18 @@
+com/example/tinnews/ui/search/SearchFragment.java
+ com.example.tinnews.ui.search.SearchFragment
+com/example/tinnews/databinding/FragmentSaveBinding.java
+ com.example.tinnews.databinding.FragmentSaveBinding
+com/example/tinnews/databinding/FragmentSearchBinding.java
+ com.example.tinnews.databinding.FragmentSearchBinding
+com/example/tinnews/ui/home/HomeFragment.java
+ com.example.tinnews.ui.home.HomeFragment
+com/example/tinnews/BuildConfig.java
+ com.example.tinnews.BuildConfig
+com/example/tinnews/ui/save/SaveFragment.java
+ com.example.tinnews.ui.save.SaveFragment
+com/example/tinnews/MainActivity.java
+ com.example.tinnews.MainActivity
+com/example/tinnews/databinding/FragmentHomeBinding.java
+ com.example.tinnews.databinding.FragmentHomeBinding
+com/example/tinnews/databinding/ActivityMainBinding.java
+ com.example.tinnews.databinding.ActivityMainBinding
