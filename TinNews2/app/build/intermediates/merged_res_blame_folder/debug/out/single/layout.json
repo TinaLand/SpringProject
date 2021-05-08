@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "/Users/tianhuihuang/Desktop/SpringProject/TinNews/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_blank.xml",
+        "source": "/Users/tianhuihuang/Desktop/SpringProject/TinNews/app/src/main/res/layout/fragment_blank.xml"
+    },
+    {
+        "merged": "/Users/tianhuihuang/Desktop/SpringProject/TinNews/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_home.xml",
+        "source": "/Users/tianhuihuang/Desktop/SpringProject/TinNews/app/src/main/res/layout/fragment_home.xml"
+    },
+    {
+        "merged": "/Users/tianhuihuang/Desktop/SpringProject/TinNews/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_search.xml",
+        "source": "/Users/tianhuihuang/Desktop/SpringProject/TinNews/app/src/main/res/layout/fragment_search.xml"
+    },
+    {
+        "merged": "/Users/tianhuihuang/Desktop/SpringProject/TinNews/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_save.xml",
+        "source": "/Users/tianhuihuang/Desktop/SpringProject/TinNews/app/src/main/res/layout/fragment_save.xml"
+    },
+    {
+        "merged": "/Users/tianhuihuang/Desktop/SpringProject/TinNews/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main.xml",
+        "source": "/Users/tianhuihuang/Desktop/SpringProject/TinNews/app/src/main/res/layout/activity_main.xml"
+    }
+]
